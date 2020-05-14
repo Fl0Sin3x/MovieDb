@@ -63,6 +63,12 @@ class Movie
      */
     private $posts;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\MovieActor", mnversedBy="movies")
+     * @ORM\JoinTable(name="movie_characters")
+     */
+    private $moviecharacters;
+
     public function __construct()
     {
         $this->awards = new ArrayCollection();
