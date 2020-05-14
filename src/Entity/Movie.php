@@ -64,7 +64,7 @@ class Movie
     private $posts;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\MovieActor", mnversedBy="movies")
+     * @ORM\OneToMany(targetEntity="App\Entity\MovieActor", inversedBy="movies")
      * @ORM\JoinTable(name="movie_characters")
      */
     private $moviecharacters;

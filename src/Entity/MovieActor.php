@@ -27,7 +27,7 @@ class MovieActor
      */
     private $name;
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Movie", mappedBy="$moviecharacters)
+     * @ORM\ManyToOne(targetEntity="App\Entity\Movie", mappedBy="moviecharacters")
      */
   private $movies;
 
