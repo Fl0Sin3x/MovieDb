@@ -6,7 +6,10 @@
 
 {% block body %}
 <h1 class="mt-5">{{ movie.title }}</h1>
-
+    <h2>Les roles</h2>
+    {% for character in movie.characters %}
+            {{ character.person.name }}
+    {% endfor %}
 <dl class="mt-5">
     {% if movie.releaseDate is not empty %}
     <dt>Date de sortie</dt>

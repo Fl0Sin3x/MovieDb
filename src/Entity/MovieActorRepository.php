@@ -1,26 +1,26 @@
 <?php
 
-namespace App\Repository;
+namespace App\Entity;
 
-use App\Entity\MovieActor;
+use App\Entity\Character;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method MovieActor|null find($id, $lockMode = null, $lockVersion = null)
- * @method MovieActor|null findOneBy(array $criteria, array $orderBy = null)
- * @method MovieActor[]    findAll()
- * @method MovieActor[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Character|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Character|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Character[]    findAll()
+ * @method Character[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class MovieActorRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, MovieActor::class);
+        parent::__construct($registry, Character::class);
     }
 
     // /**
-    //  * @return MovieActor[] Returns an array of MovieActor objects
+    //  * @return Character[] Returns an array of Character objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class MovieActorRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?MovieActor
+    public function findOneBySomeField($value): ?Character
     {
         return $this->createQueryBuilder('m')
             ->andWhere('m.exampleField = :val')

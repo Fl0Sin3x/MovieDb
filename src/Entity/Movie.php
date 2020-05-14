@@ -64,19 +64,18 @@ class Movie
     private $posts;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\MovieActor", inversedBy="movies")
-     * @ORM\JoinTable(name="movie_characters")
+     * @ORM\OneToMany(targetEntity="App\Entity\Character", mappedBy="movie")
      */
-    private $moviecharacters;
+    private $characters;
 
     public function __construct()
     {
         $this->awards = new ArrayCollection();
         $this->actors = new ArrayCollection();
-        $this->category = new ArrayCollection();
         $this->writers = new ArrayCollection();
         $this->categories = new ArrayCollection();
         $this->posts = new ArrayCollection();
+        $this->characters = new ArrayCollection();
     }
 
 
@@ -259,4 +258,37 @@ class Movie
 
         return $this;
     }
+
+    /**
+     * @return Collection|Character[]
+     */
+    public function getCharacters(): Collection
+    {
+        return $this->characters;
+    }
+
+    public function addCharacter(Character $character): self
+    {
+        if (!$this->characters->contains($character)) {
+            $this->characters[] = $character;
+            $character->setMovie($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCharacter(Character $character): self
+    {
+        if ($this->characters->contains($character)) {
+            $this->characters->removeElement($character);
+            // set the owning side to null (unless already changed)
+            if ($character->getMovie() === $this) {
+                $character->setMovie(null);
+            }
+        }
+
+        return $this;
+    }
+
+
 }
