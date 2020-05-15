@@ -39,11 +39,6 @@ class Movie
      */
     private $director;
 
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Person", inversedBy="actedInMovies")
-     * @ORM\JoinTable(name="movie_actor")
-     */
-    private $actors;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Person", inversedBy="writedMovies")
@@ -64,18 +59,18 @@ class Movie
     private $posts;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Character", mappedBy="movie")
+     * @ORM\OneToMany(targetEntity=MovieActor::class, mappedBy="movie", orphanRemoval=true)
      */
-    private $characters;
+    private $movieActors;
 
     public function __construct()
     {
         $this->awards = new ArrayCollection();
-        $this->actors = new ArrayCollection();
+        $this->category = new ArrayCollection();
         $this->writers = new ArrayCollection();
         $this->categories = new ArrayCollection();
         $this->posts = new ArrayCollection();
-        $this->characters = new ArrayCollection();
+        $this->movieActors = new ArrayCollection();
     }
 
 
@@ -147,32 +142,6 @@ class Movie
             if ($award->getMovie() === $this) {
                 $award->setMovie(null);
             }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Person[]
-     */
-    public function getActors(): Collection
-    {
-        return $this->actors;
-    }
-
-    public function addActor(Person $actor): self
-    {
-        if (!$this->actors->contains($actor)) {
-            $this->actors[] = $actor;
-        }
-
-        return $this;
-    }
-
-    public function removeActor(Person $actor): self
-    {
-        if ($this->actors->contains($actor)) {
-            $this->actors->removeElement($actor);
         }
 
         return $this;
@@ -260,35 +229,33 @@ class Movie
     }
 
     /**
-     * @return Collection|Character[]
+     * @return Collection|MovieActor[]
      */
-    public function getCharacters(): Collection
+    public function getMovieActors(): Collection
     {
-        return $this->characters;
+        return $this->movieActors;
     }
 
-    public function addCharacter(Character $character): self
+    public function addMovieActor(MovieActor $movieActor): self
     {
-        if (!$this->characters->contains($character)) {
-            $this->characters[] = $character;
-            $character->setMovie($this);
+        if (!$this->movieActors->contains($movieActor)) {
+            $this->movieActors[] = $movieActor;
+            $movieActor->setMovie($this);
         }
 
         return $this;
     }
 
-    public function removeCharacter(Character $character): self
+    public function removeMovieActor(MovieActor $movieActor): self
     {
-        if ($this->characters->contains($character)) {
-            $this->characters->removeElement($character);
+        if ($this->movieActors->contains($movieActor)) {
+            $this->movieActors->removeElement($movieActor);
             // set the owning side to null (unless already changed)
-            if ($character->getMovie() === $this) {
-                $character->setMovie(null);
+            if ($movieActor->getMovie() === $this) {
+                $movieActor->setMovie(null);
             }
         }
 
         return $this;
     }
-
-
 }

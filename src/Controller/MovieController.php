@@ -19,7 +19,9 @@ class MovieController extends AbstractController
      * @Route("/list", name="movie_list", methods={"GET"})
      */
     public function list() {
-        $movies = $this->getDoctrine()->getRepository(Movie::class)->findAll();
+        $movies = $this->getDoctrine()->getRepository(Movie::class)->findBy(
+            [],
+            ["title"=>"asc"]);
         
         return $this->render('movie/list.html.twig', [
             "movies" => $movies
