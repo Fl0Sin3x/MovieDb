@@ -18,24 +18,34 @@ class MovieController extends AbstractController
     /**
      * @Route("/list", name="movie_list", methods={"GET"})
      */
-    public function list() {
+    public function list(Request $request) {
+
+        $search = $request->query->get("search", "");
+
+        /*
         $movies = $this->getDoctrine()->getRepository(Movie::class)->findBy(
-            [],
-            ["title"=>"asc"]);
-        
+            ["title" => $search], // WHERE title = "search"
+            ["title" => "asc"]
+        );
+
+        // on a plutot besoin d'un title LIKE "%search%"
+        */
+
+        $movies = $this->getDoctrine()->getRepository(Movie::class)->findByPartialTitle($search);
+
         return $this->render('movie/list.html.twig', [
-            "movies" => $movies
+            "movies" => $movies,
+            "search" => $search
+
         ]);
     }
 
     /**
      * @Route("/{id}/view", name="movie_view", requirements={"id" = "\d+"}, methods={"GET"})
      */
-    public function view(Movie $movie)
+    public function view($id)
     {
-        // Pas besoin car on utilise le paramConverter de Doctrine
-        // il s'occupe de recuperer mon entité grace aux parametres de la route
-        // $movie = $this->getDoctrine()->getRepository(Movie::class)->find($id);
+        $movie = $this->getDoctrine()->getRepository(Movie::class)->findWithFullData($id);
 
         if(!$movie) {
             throw $this->createNotFoundException("Ce film n'existe pas !");
@@ -103,7 +113,7 @@ class MovieController extends AbstractController
             }
 
         }
-        
+
         $categories = $this->getDoctrine()->getRepository(Category::class)->findAll();
         $persons = $this->getDoctrine()->getRepository(Person::class)->findAll();
 
@@ -113,14 +123,14 @@ class MovieController extends AbstractController
         ]);
     }
 
-    
+
     /**
      * @Route("/{id}/delete", name="movie_delete", methods={"GET"})
      */
     public function delete($id) {
         // je recupère mon entité
         $movie = $this->getDoctrine()->getRepository(Movie::class)->find($id);
-        
+
         // si le film n'éxiste pas on renvoi sur une 404
         if(!$movie) {
             throw $this->createNotFoundException("Ce film n'existe pas !");
@@ -136,7 +146,7 @@ class MovieController extends AbstractController
         return $this->redirectToRoute('movie_list');
     }
 
-    
+
     /**
      * @Route("/{id}/update", name="movie_update", requirements={"id" = "\d+"}, methods={"GET", "POST"})
      */
@@ -146,9 +156,9 @@ class MovieController extends AbstractController
             throw $this->createNotFoundException("Ce film n'existe pas !");
         }
 
-        
+
         if($request->getMethod() == Request::METHOD_POST) {
-            
+
             $title = $request->request->get('title');
             if(empty($title)) {
                 $this->addFlash('warning', 'Le titre ne peut pas être vide !');
