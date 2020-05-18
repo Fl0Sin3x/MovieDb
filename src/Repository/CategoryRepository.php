@@ -37,6 +37,26 @@ class CategoryRepository extends ServiceEntityRepository
     */
 
     /*
+     * 1
+
+public function findWithFullCategory($id)
+    {
+        // je crée un querybuilder sur l'objet Movie avec l'alias 'movie'
+        $builder = $this->createQueryBuilder('category');
+        // je met ma condition de recherche
+        $builder->where("category.id = :id");
+        // J'ajoute la valeur du parametre utilisé dans ma condition
+        $builder->setParameter('id', $id);
+        // je crée une jointure avec la table movieactor
+        $builder->leftJoin('category.movie', 'movie');
+        // J'ajoute l'acteur au select pour que doctrine alimente les objets associés
+        $builder->addSelect('movie');
+        // j'execute la requete
+        $query = $builder->getQuery();
+        // je recupére le resultat non pas sous la forme d'un tableau mais un ou 0 objets
+        $result = $query->getOneOrNullResult();
+
+        return $result;
     public function findOneBySomeField($value): ?Category
     {
         return $this->createQueryBuilder('c')

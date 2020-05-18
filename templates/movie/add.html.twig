@@ -1,23 +1,18 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}
+    {{ parent() }} - Ajouté un Film
+{% endblock %}
+
 {% block body %}
+    <h1 class="mt-5">Ajouter un film</h1>
 
-<h1>Ajouter un film</h1>
+    {{ form_start(formMovie) }}
+    {{ form_row(formMovie.title,{'attr':{'placeholder':"Titre du film"}}) }}
+    {{ form_widget(formMovie) }}
 
-<form method="POST">
-    <input type="text" name="title" />
-    <input type="date" name="releaseDate" />
-    <select name="categoryId">
-        {% for category in categories %}
-        <option value="{{ category.id }}">{{ category.label }}</option>
-        {% endfor %}
-    </select>
-    <select name="personId">
-        {% for person in persons %}
-        <option value="{{ person.id }}">{{ person.name }}</option>
-        {% endfor %}
-    </select>
-    <input type="submit" value="Enregistrer" />
-</form>
+
+    <button class="btn btn-primary" type="submit">Valider</button>
+    {{ form_end(formMovie) }}
 
 {% endblock %}

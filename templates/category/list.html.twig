@@ -11,6 +11,8 @@
     <a href="{{ path('category_view', {'id': category.id}) }}" class="list-group-item list-group-item-action">
         {{ category.label }}
     </a>
+
     {% endfor %}
+    <a class="btn btn-primary" href="{{ path('category_add') }}">Ajouter une catégorie</a>
 </div>
 {% endblock %}
