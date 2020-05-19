@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Category;
+use App\Entity\Person;
 use App\Form\CategoryType;
+use App\Form\PersonType;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -86,8 +88,45 @@ class CategoryController extends AbstractController
         return $this->render(
             'category/add.html.twig',
             [
-                "form" => $form->createView()
+                "categoryForm" => $form->createView()
             ]
         );
+    }
+    /**
+     * @Route("/{id}/update", name="category_update", requirements={"id" = "\d+"}, methods={"GET", "POST"})
+     */
+    public function updateCategory(Request $request, Category $category)
+    {
+
+        $form = $this->createForm(CategoryType::class, $category);
+
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()) {
+            $manager = $this->getDoctrine()->getManager();
+            // Pas besoin de persist, l'objet manipulé est déjà connu du manager
+            $manager->flush();
+
+            return $this->redirectToRoute('category_view', ['id' => $category->getId()]);
+        }
+
+        return $this->render('category/update.html.twig', [
+            "categoryForm" => $form->createView()
+        ]);
+    }
+    /**
+     * @Route("/{id}/delete", name="category_delete", methods={"GET"})
+     */
+    public function delete($id) {
+        // je recupère mon entité
+        $category = $this->getDoctrine()->getRepository(Category::class)->find($id);
+
+        // je demande le manager
+        $manager = $this->getDoctrine()->getManager();
+        // je dit au manager que cette entité devra faire l'objet d'une suppression
+        $manager->remove($category);
+        // je demande au manager d'executer dans la BDD toute les modifications qui ont été faites sur les entités
+        $manager->flush();
+        // On retourne sur la liste des films
+        return $this->redirectToRoute('category_list');
     }
 }

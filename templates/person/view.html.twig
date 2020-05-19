@@ -7,6 +7,8 @@
 {% block body %}
     <h1 class="mt-5">{{ person.name }}</h1>
     Né(e) le {{ person.birthDate | date('d/m/Y')}}
+    <a class="btn btn-warning" href="{{ path('person_update', {'id': person.id}) }}">modifier</a>
+    <a class="btn btn-danger" href="{{ path('person_delete', {'id': person.id}) }}">supprimer</a>
 
     {% if person.movieActors is not empty %}
         <h3 class="mt-5">Acteur</h3>

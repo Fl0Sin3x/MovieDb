@@ -58,8 +58,8 @@ class PersonController extends AbstractController
      */
     public function updatePerson(Request $request, Person $person)
     {
-        $newPerson = new Person();
-        $form = $this->createForm(PersonType::class, $newPerson);
+        // Pas besoin de créer une entité, j'utilise celle recupérée depuis la BDD
+        $form = $this->createForm(PersonType::class, $person);
 
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()) {
@@ -70,8 +70,24 @@ class PersonController extends AbstractController
             return $this->redirectToRoute('person_view', ['id' => $person->getId()]);
         }
 
-        return $this->render('person/add.html.twig', [
+        return $this->render('person/update.html.twig', [
             "personForm" => $form->createView()
         ]);
+    }
+    /**
+     * @Route("/{id}/delete", name="person_delete", methods={"GET"})
+     */
+    public function delete($id) {
+        // je recupère mon entité
+        $person = $this->getDoctrine()->getRepository(Person::class)->find($id);
+
+        // je demande le manager
+        $manager = $this->getDoctrine()->getManager();
+        // je dit au manager que cette entité devra faire l'objet d'une suppression
+        $manager->remove($person);
+        // je demande au manager d'executer dans la BDD toute les modifications qui ont été faites sur les entités
+        $manager->flush();
+        // On retourne sur la liste des films
+        return $this->redirectToRoute('movie_list');
     }
 }

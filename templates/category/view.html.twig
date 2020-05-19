@@ -6,6 +6,8 @@
 
 {% block body %}
 <h1 class="mt-5"> Catégories {{ category.label }}</h1>
+    <a class="btn btn-warning" href="{{ path('category_update', {'id': category.id}) }}">Modifier la catégorie</a>
+    <a class="btn btn-danger" href="{{ path('category_delete', {'id': category.id}) }}">Supprimer</a>
 <h3 class="mt-5">Films</h3>
 <div class="list-group">
     {% for movie in category.movies %}

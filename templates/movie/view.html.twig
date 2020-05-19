@@ -6,6 +6,8 @@
 
 {% block body %}
     <h1 class="mt-5">{{ movie.title }}</h1>
+    <a class="btn btn-danger" href="{{ path('movie_delete', {'id': movie.id}) }}">Supprimer</a>
+    <a class="btn btn-warning" href="{{ path('movie_update', {'id': movie.id}) }}">Modifier</a>
 
     <dl class="mt-5">
         {% if movie.releaseDate is not empty %}
