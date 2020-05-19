@@ -6,6 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\MovieRepository;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=MovieRepository::class)
@@ -64,6 +65,23 @@ class Movie
      */
     private $movieActors;
 
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $imageFilename;
+
+    public function getImageFilename()
+    {
+        return $this->imageFilename;
+    }
+
+    public function setImageFilename($imageFilename)
+    {
+        $this->imageFilename = $imageFilename;
+
+        return $this;
+    }
+
     public function __construct()
     {
         $this->awards = new ArrayCollection();
@@ -108,6 +126,15 @@ class Movie
     public function getDirector(): ?Person
     {
         return $this->director;
+    }
+
+    public function addDirector(Person $director): self
+    {
+        if (!$this->director->contains($director)) {
+            $this->director[] = $director;
+        }
+
+        return $this;
     }
 
     public function setDirector(?Person $director): self
@@ -259,4 +286,6 @@ class Movie
 
         return $this;
     }
+
+
 }

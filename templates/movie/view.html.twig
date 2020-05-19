@@ -8,7 +8,13 @@
     <h1 class="mt-5">{{ movie.title }}</h1>
     <a class="btn btn-danger" href="{{ path('movie_delete', {'id': movie.id}) }}">Supprimer</a>
     <a class="btn btn-warning" href="{{ path('movie_update', {'id': movie.id}) }}">Modifier</a>
-
+    {% if movie.imageFilename is not empty %}
+        <h3 class="mt-5">Affiche</h3>
+        <dd>
+            <img class="d-flex flex-row-reverse" src="{{asset('uploads/images/' ~ movie.imageFilename ) }}">
+        </dd>
+        <div class="list-group">
+    {% endif %}
     <dl class="mt-5">
         {% if movie.releaseDate is not empty %}
             <dt>Date de sortie</dt>
@@ -80,6 +86,7 @@
                     {{ post.title }}
                 </a>
             {% endfor %}
+
         </div>
     {% endif %}
 

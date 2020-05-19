@@ -8,8 +8,11 @@ use App\Entity\Person;
 use App\Form\CategoryType;
 use App\Form\MovieType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * @Route("/movie")
@@ -61,7 +64,7 @@ class MovieController extends AbstractController
     /**
      * @Route("/add", name="movie_add", methods={"GET", "POST"})
      */
-    public function add(Request $request)
+    public function add(Request $request, SluggerInterface $slugger)
     {
 
         $newMovie = new Movie();
@@ -74,6 +77,30 @@ class MovieController extends AbstractController
         $form->handleRequest($request);
         // A ce moment le formualire sait si des données ont été postées
         if($form->isSubmitted() && $form->isValid()) {
+            $imageFile = $form->get('image')->getData();
+
+            // this condition is needed because the 'image' field is not required
+            // so the PDF file must be processed only when a file is uploaded
+            if ($imageFile) {
+                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+                // this is needed to safely include the file name as part of the URL
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$imageFile->guessExtension();
+
+                // Move the file to the directory where images are stored
+                try {
+                    $imageFile->move(
+                        $this->getParameter('images_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // ... handle exception if something happens during file upload
+                }
+
+                // updates the 'imageFilename' property to store the PDF file name
+                // instead of its contents
+                $newMovie->setImageFilename($newFilename);
+            }
             $manager = $this->getDoctrine()->getManager();
             $manager->persist($newMovie);
             $manager->flush();
@@ -97,10 +124,6 @@ class MovieController extends AbstractController
         // je recupère mon entité
         $movie = $this->getDoctrine()->getRepository(Movie::class)->find($id);
 
-        // si le film n'éxiste pas on renvoi sur une 404
-        if(!$movie) {
-            throw $this->createNotFoundException("Ce film n'existe pas !");
-        }
 
         // je demande le manager
         $manager = $this->getDoctrine()->getManager();
@@ -116,13 +139,39 @@ class MovieController extends AbstractController
     /**
      * @Route("/{id}/update", name="movie_update", requirements={"id" = "\d+"}, methods={"GET", "POST"})
      */
-    public function update(Movie $movie, Request $request)
+    public function update(Movie $movie, Request $request, SluggerInterface $slugger)
     {
 
         $form = $this->createForm(MovieType::class, $movie);
 
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()) {
+            $imageFile = $form->get('image')->getData();
+
+            // this condition is needed because the 'image' field is not required
+            // so the PDF file must be processed only when a file is uploaded
+            if ($imageFile) {
+                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+                // this is needed to safely include the file name as part of the URL
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$imageFile->guessExtension();
+
+                // Move the file to the directory where images are stored
+                try {
+                    $imageFile->move(
+                        $this->getParameter('images_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // ... handle exception if something happens during file upload
+                }
+
+                // updates the 'imageFilename' property to store the PDF file name
+                // instead of its contents
+                $movie->setImageFilename($newFilename);
+            }
+            // il manque le traitement de l'image ici
+            // @TODO : Faire pareil que dans le add
             $manager = $this->getDoctrine()->getManager();
             // Pas besoin de persist, l'objet manipulé est déjà connu du manager
             $manager->flush();
