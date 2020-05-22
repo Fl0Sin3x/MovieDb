@@ -44,6 +44,7 @@ class PersonController extends AbstractController
             $manager = $this->getDoctrine()->getManager();
             $manager->persist($newPerson);
             $manager->flush();
+            $this->addFlash("success", "La personne a été ajoutée");
             return $this->redirectToRoute('person_view', ['id' => $newPerson->getId() ]);
         }
 
@@ -66,12 +67,15 @@ class PersonController extends AbstractController
             $manager = $this->getDoctrine()->getManager();
             // Pas besoin de persist, l'objet manipulé est déjà connu du manager
             $manager->flush();
-
+            $this->addFlash("success", "La personne a été mise à jour");
             return $this->redirectToRoute('person_view', ['id' => $person->getId()]);
         }
 
         return $this->render('person/update.html.twig', [
-            "personForm" => $form->createView()
+            "personForm" => $form->createView(),
+            "person" => $person
+
+
         ]);
     }
     /**
@@ -80,13 +84,20 @@ class PersonController extends AbstractController
     public function delete($id) {
         // je recupère mon entité
         $person = $this->getDoctrine()->getRepository(Person::class)->find($id);
+        $personName = $person->getName();
 
+        if(!$person->getDirectedMovies()->isEmpty()) {
+            $this->addFlash('info', "Supprimer $personName ne sera possible que s'il n'est plus réalisateur");
+            return $this->redirectToRoute('person_update', ['id' => $person->getId()]);
+        }
         // je demande le manager
         $manager = $this->getDoctrine()->getManager();
         // je dit au manager que cette entité devra faire l'objet d'une suppression
         $manager->remove($person);
         // je demande au manager d'executer dans la BDD toute les modifications qui ont été faites sur les entités
         $manager->flush();
+        $personName = $person->getName();
+        $this->addFlash('alert alert-danger', "$personName a été supprimée");
         // On retourne sur la liste des films
         return $this->redirectToRoute('movie_list');
     }

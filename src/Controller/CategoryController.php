@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 /**
- * @Route("/category")
+ * @Route("/category", name="category_")
  */
 class CategoryController extends AbstractController
 {
@@ -23,7 +23,7 @@ class CategoryController extends AbstractController
      * Ici on demande en parametre de notre methode de controller un objet de type Category
      * Catregory etant une entité, Doctrine va essayer d'utiliser les parametres de la route pour retrouver l'entité Category correspondant a l'id passé dans la route
      *
-     * @Route("/{id}/view", name="category_view", requirements={"id" = "\d+"}, methods={"GET"})
+     * @Route("/{id}/view", name="view", requirements={"id" = "\d+"}, methods={"GET"})
      */
     public function viewCategory(Category $category)
     {
@@ -33,7 +33,7 @@ class CategoryController extends AbstractController
     }
 
     /**
-     * @Route("/list", name="category_list", methods={"GET"})
+     * @Route("/list", name="list", methods={"GET"})
      */
     public function listCategories()
     {
@@ -43,12 +43,9 @@ class CategoryController extends AbstractController
         ]);
     }
 
+
     /**
-     * @Route("/add", name="category_add", methods={"GET", "POST"})
-     *
-     */
-    /**
-     * @Route("/add", name="category_add", methods={"GET", "POST"})
+     * @Route("/add", name="add", methods={"GET", "POST"})
      */
     public function addCategory(Request $request)
     {
@@ -93,7 +90,7 @@ class CategoryController extends AbstractController
         );
     }
     /**
-     * @Route("/{id}/update", name="category_update", requirements={"id" = "\d+"}, methods={"GET", "POST"})
+     * @Route("/{id}/update", name="update", requirements={"id" = "\d+"}, methods={"GET", "POST"})
      */
     public function updateCategory(Request $request, Category $category)
     {
@@ -105,16 +102,18 @@ class CategoryController extends AbstractController
             $manager = $this->getDoctrine()->getManager();
             // Pas besoin de persist, l'objet manipulé est déjà connu du manager
             $manager->flush();
-
+            $this->addFlash("success", "La catégorie a été mise à jour");
+            //On se redirige vers la catégorie modifié
             return $this->redirectToRoute('category_view', ['id' => $category->getId()]);
         }
 
         return $this->render('category/update.html.twig', [
-            "categoryForm" => $form->createView()
+            "categoryForm" => $form->createView(),
+            'category' => $category,
         ]);
     }
     /**
-     * @Route("/{id}/delete", name="category_delete", methods={"GET"})
+     * @Route("/{id}/delete", name="delete", methods={"GET"})
      */
     public function delete($id) {
         // je recupère mon entité
@@ -126,6 +125,7 @@ class CategoryController extends AbstractController
         $manager->remove($category);
         // je demande au manager d'executer dans la BDD toute les modifications qui ont été faites sur les entités
         $manager->flush();
+        $this->addFlash("alert alert-danger", "La catégorie a été supprimer");
         // On retourne sur la liste des films
         return $this->redirectToRoute('category_list');
     }

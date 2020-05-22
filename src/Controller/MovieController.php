@@ -4,8 +4,10 @@ namespace App\Controller;
 
 use App\Entity\Category;
 use App\Entity\Movie;
+use App\Entity\MovieActor;
 use App\Entity\Person;
 use App\Form\CategoryType;
+use App\Form\MovieActorType;
 use App\Form\MovieType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
@@ -66,10 +68,7 @@ class MovieController extends AbstractController
      */
     public function add(Request $request, SluggerInterface $slugger)
     {
-
         $newMovie = new Movie();
-        $newCategory = new Category();
-
         //Je crée un formulaire grace a ma classe CategoryType
         // Symfony va automatiquement appeler la methode buildForm() de cette classe
         $form = $this->createForm(MovieType::class, $newMovie);
@@ -77,28 +76,23 @@ class MovieController extends AbstractController
         $form->handleRequest($request);
         // A ce moment le formualire sait si des données ont été postées
         if($form->isSubmitted() && $form->isValid()) {
+
+            /** @var UploadedFile $imageFile */
             $imageFile = $form->get('image')->getData();
 
-            // this condition is needed because the 'image' field is not required
-            // so the PDF file must be processed only when a file is uploaded
             if ($imageFile) {
                 $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
-                // this is needed to safely include the file name as part of the URL
+
                 $safeFilename = $slugger->slug($originalFilename);
                 $newFilename = $safeFilename.'-'.uniqid().'.'.$imageFile->guessExtension();
-
-                // Move the file to the directory where images are stored
                 try {
                     $imageFile->move(
                         $this->getParameter('images_directory'),
                         $newFilename
                     );
                 } catch (FileException $e) {
-                    // ... handle exception if something happens during file upload
-                }
 
-                // updates the 'imageFilename' property to store the PDF file name
-                // instead of its contents
+                }
                 $newMovie->setImageFilename($newFilename);
             }
             $manager = $this->getDoctrine()->getManager();
@@ -131,6 +125,8 @@ class MovieController extends AbstractController
         $manager->remove($movie);
         // je demande au manager d'executer dans la BDD toute les modifications qui ont été faites sur les entités
         $manager->flush();
+        $movieTitle = $movie->getTitle();
+        $this->addFlash('info', "$movieTitle a été supprimé");
         // On retourne sur la liste des films
         return $this->redirectToRoute('movie_list');
     }
@@ -180,12 +176,33 @@ class MovieController extends AbstractController
         }
 
         return $this->render('movie/update.html.twig', [
-            "movieForm" => $form->createView()
+            "movieForm" => $form->createView(),
+            "movie"=> $movie
         ]);
-
-
-
-
     }
 
+    /**
+     * @Route("/{id}/actor/add", name="movie_actor_add", requirements={"id" = "\d+"}, methods={"GET", "POST"})
+     */
+    public function addMovieActor(Movie $movie, Request $request)
+    {
+        $movieActor = new MovieActor();
+        $movieActor->setMovie($movie);
+
+        $form = $this->createForm(MovieActorType::class, $movieActor);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()) {
+            $manager = $this->getDoctrine()->getManager();
+            $manager->persist($movieActor);
+            $manager->flush();
+
+            return $this->redirectToRoute('movie_view', ["id" => $movie->getId()]);
+        }
+
+        return $this->render('movie/add_actor.html.twig', [
+            "form" => $form->createView(),
+            "movie" => $movie
+        ]);
+    }
 }

@@ -23,21 +23,27 @@ class Movie
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
+     * @Assert\Length(max=255)
      */
     private $title;
 
     /**
      * @ORM\Column(type="date")
+     * @Assert\NotNull
+     * * @Assert\Type(\DateTime::class)
      */
     private $releaseDate;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Category", inversedBy="movies")
+     * * @Assert\Count(min=1, max=4)
      */
     private $categories;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Person", inversedBy="directedMovies")
+     * @Assert\NotNull
      */
     private $director;
 
@@ -45,6 +51,7 @@ class Movie
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Person", inversedBy="writedMovies")
      * @ORM\JoinTable(name="movie_writer")
+     * @Assert\Count(min=1)
      */
     private $writers;
 
@@ -61,12 +68,14 @@ class Movie
     private $posts;
 
     /**
-     * @ORM\OneToMany(targetEntity=MovieActor::class, mappedBy="movie", orphanRemoval=true)
+     *  @ORM\OneToMany(targetEntity=MovieActor::class, mappedBy="movie", orphanRemoval=true, cascade={"persist"})
+     *  @Assert\Valid
      */
     private $movieActors;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", length=255, nullable=true)
+     *
      */
     private $imageFilename;
 
@@ -92,6 +101,10 @@ class Movie
         $this->movieActors = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return $this->title;
+    }
 
     public function getId(): ?int
     {

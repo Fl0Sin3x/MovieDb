@@ -10,6 +10,7 @@
     {{ form_start(categoryForm) }}
     {{ form_widget(categoryForm) }}
     <button class="btn btn-primary" type="submit">Valider</button>
+    <a href="{{ path('category_view', {'id': category.id}) }}" class="btn btn-link">Annuler</a>
     {{ form_end(categoryForm) }}
 
 {% endblock %}

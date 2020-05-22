@@ -9,6 +9,8 @@ use App\Entity\Post;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -23,37 +25,45 @@ class MovieType extends AbstractType
     {
 
         $builder
-            ->add('title')
-            ->add('releaseDate', BirthdayType::class, [
+            ->add('title', TextType::class, [
+                "label" => "Titre"
+            ])
+
+            ->add('releaseDate', DateType::class, [
+                "label" => "Date de sortie",
                 "widget" => "single_text"
             ])
             ->add('categories',EntityType::class, array(
+                "label" => "Catégories",
                 "class"=>Category::class,
                 "choice_label"=>'label',
                 'multiple' => true,
+                "expanded" => true
             ))
             ->add('writers', EntityType::class, array(
+                "label" => "Réalisateur",
                 "class"=>Person::class,
                 "choice_label"=>'name',
                 'multiple' => true,
                 ))
             ->add('director', EntityType::class, array(
+                "label" => "Scénaristes",
                 "class"=>Person::class,
                 "choice_label"=>'name',
                 'multiple' => false,
+
             ))
+            ->add('movieActors', CollectionType::class, [
+                'entry_type' => MovieActorType::class,
+                'entry_options' => ['label' => false],
+                'allow_add' => true,
+                "by_reference" => false
+            ])
+
             ->add('image', FileType::class, [
-                'label' => 'image (JPG file)',
-
-                // unmapped means that this field is not associated to any entity property
+                'label' => 'Affiche',
                 'mapped' => false,
-
-                // make it optional so you don't have to re-upload the PDF file
-                // every time you edit the Product details
                 'required' => false,
-
-                // unmapped fields can't define their validation using annotations
-                // in the associated entity, so you can use the PHP constraint classes
                 'constraints' => [
                     new File([
                         'maxSize' => '536k',
@@ -64,14 +74,8 @@ class MovieType extends AbstractType
                         'mimeTypesMessage' => 'Please upload a valid PDF document',
                     ])
                 ],
-            ])
-            // ...
-        ;
-
-
-
-        ;
-    }
+            ]);
+        ;}
 
     public function configureOptions(OptionsResolver $resolver)
     {

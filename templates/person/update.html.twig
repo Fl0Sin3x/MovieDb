@@ -9,7 +9,9 @@
 
     {{ form_start(personForm) }}
     {{ form_widget(personForm) }}
+    <a href="{{ path('person_view', {'id': person.id}) }}" class="btn btn-link">Annuler</a>
     <button class="btn btn-primary" type="submit">Valider</button>
+
     {{ form_end(personForm) }}
 
 {% endblock %}
