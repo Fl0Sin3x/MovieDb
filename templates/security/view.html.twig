@@ -11,11 +11,19 @@
             <th>Email</th>
             <td>{{ app.user.username }}</td>
         </tr>
+
         </tbody>
+
     </table>
-<div>
-    <a href="{{ path('homepage') }}">Revenir a l'accueil</a>
-</div>
-    <a href="{{ path('security_update', {'id': app.user.id}) }}">Modifier</a>
+
+    <div >
+    <a class="btn btn-warning" href=" {{ path('security_update', {'id': app.user.id}) }}">Modifier</a>
+    <a href="{{ path('security_delete', {'id': app.user.id}) }}" class="btn btn-danger" onclick="return confirm('Confirmez la suppression')">
+        Supprimer
+    </a>
+    </div>
+    <div>
+        <a class="btn btn-primary" href="{{ path('homepage') }}">Revenir a l'accueil</a>
+    </div>
 
 {% endblock %}
