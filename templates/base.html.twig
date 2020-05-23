@@ -24,12 +24,31 @@
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+        {% if not app.user %}
+        {% else %}
+            <a class="nav-item nav-link" href="{{ path('security_view', {'id': app.user.id}) }}">{{ app.user.username }}</a>
+        {% endif %}
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
+
                 <a class="nav-item nav-link" href="{{ path('category_list') }}">Categories</a>
                 <a class="nav-item nav-link" href="{{ path('movie_list') }}">Films</a>
                 <a class="nav-item nav-link" href="{{ path('post_index') }}">Blog</a>
                 <a class="nav-item nav-link" href="{{ path('person_add') }}">Ajouter une personne</a>
+
+                {% if not app.user %}
+                    <a class="nav-link" href="{{path('security_add')}}">Inscription</a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{path('app_login')}}">Connexion</a>
+
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+
+                        <a class="nav-link" href="{{path('app_logout')}}">Deconnexion</a>
+                    </li>
+                    <a class="nav-link" href="{{path('security_update', {'id': app.user.id })}}">update</a>
+                {% endif %}
             </div>
 
         </div>

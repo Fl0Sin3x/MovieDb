@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - Modifier vôtre compte
+{% endblock %}
+
+{% block body %}
+    <h1 class="mt-5">Modifier vôtre compte</h1>
+
+    {{ form_start(UserForm) }}
+    {{ form_row(UserForm.email) }}
+    {{ form_row(UserForm.password) }}
+
+    <button class="btn btn-primary" type="submit">Valider</button>
+    {{ form_end(UserForm) }}
+
+{% endblock %}

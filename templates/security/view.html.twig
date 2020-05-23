@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Votre profil{% endblock %}
+
+{% block body %}
+    <h1>Votre profil</h1>
+
+    <table class="table">
+        <tbody>
+        <tr>
+            <th>Email</th>
+            <td>{{ app.user.username }}</td>
+        </tr>
+        </tbody>
+    </table>
+<div>
+    <a href="{{ path('homepage') }}">Revenir a l'accueil</a>
+</div>
+    <a href="{{ path('security_update', {'id': app.user.id}) }}">Modifier</a>
+
+{% endblock %}
