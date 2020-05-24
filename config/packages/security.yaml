@@ -35,10 +35,14 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         - { path: ^/admin, roles: ROLE_ADMIN }
-        - { path: '/(update|delete|add)',roles: ROLE_ADMIN}
-        - { path: '/(list|view)', roles: ROLE_USER }
-        - { path: ^/homepage , roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        # Et si on voulait que tout le site soit accesible qu'à des utilisateurs connectés :
-        # - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: '^update|delete',roles: ROLE_ADMIN}
+        - { path: 'list|view', roles: ROLE_USER }
+        - { path: 'homepage|login/new' , roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: '^/category/add',roles: ROLE_ADMIN}
+        - { path: '^/movie/add',roles: ROLE_ADMIN}
+        - { path: '^/person/add',roles: ROLE_ADMIN}
+        - { path: '^/login/add', roles: IS_AUTHENTICATED_ANONYMOUSLY }
+          # Et si on voulait que tout le site soit accesible qu'à des utilisateurs connectés :
+
 
         # - { path: ^/, roles: IS_AUTHENTICATED_FULLY }
