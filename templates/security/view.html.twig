@@ -10,6 +10,10 @@
         <tr>
             <th>Email</th>
             <td>{{ app.user.username }}</td>
+            <th>Role</th>
+            <td>{% for role in app.user.roles %}
+                    <li>{{ role }}</li>
+                {% endfor %}</td>
         </tr>
 
         </tbody>
