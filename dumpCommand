@@ -1,0 +1,1343 @@
+array:17 [
+  0 => App\Entity\Movie {#366
+    -id: 1
+    -title: "Avatar"
+    -releaseDate: DateTime @1283299200 {#400
+      date: 2010-09-01 00:00:00.0 UTC (+00:00)
+    }
+    -categories: Doctrine\ORM\PersistentCollection {#2100
+      -snapshot: []
+      -owner: App\Entity\Movie {#366}
+      -association: array:20 [ …20]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "movies"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#2447 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#5651
+        -elements: []
+      }
+      #initialized: false
+    }
+    -director: Proxies\__CG__\App\Entity\Person {#536
+      +__isInitialized__: false
+      -id: 1
+      -name: null
+      -birthDate: null
+      -writedMovies: null
+      -directedMovies: null
+      -movieActors: null
+       …2
+    }
+    -writers: Doctrine\ORM\PersistentCollection {#382
+      -snapshot: []
+      -owner: App\Entity\Movie {#366}
+      -association: array:20 [ …20]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "writedMovies"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#455 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#547
+        -elements: []
+      }
+      #initialized: false
+    }
+    -awards: Doctrine\ORM\PersistentCollection {#2172
+      -snapshot: []
+      -owner: App\Entity\Movie {#366}
+      -association: array:15 [ …15]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "movie"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#516 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#1830
+        -elements: []
+      }
+      #initialized: false
+    }
+    -posts: Doctrine\ORM\PersistentCollection {#986
+      -snapshot: []
+      -owner: App\Entity\Movie {#366}
+      -association: array:16 [ …16]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "movies"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#1804 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#1002
+        -elements: []
+      }
+      #initialized: false
+    }
+    -movieActors: Doctrine\ORM\PersistentCollection {#1541
+      -snapshot: []
+      -owner: App\Entity\Movie {#366}
+      -association: array:15 [ …15]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "movie"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#6043 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#1656
+        -elements: []
+      }
+      #initialized: false
+    }
+    -imageFilename: "s-l1600-5ec3e7cea0f3d.jpeg"
+    -slug: null
+  }
+  1 => App\Entity\Movie {#4829
+    -id: 2
+    -title: "Titanic"
+    -releaseDate: DateTime @884131200 {#1520
+      date: 1998-01-07 00:00:00.0 UTC (+00:00)
+    }
+    -categories: Doctrine\ORM\PersistentCollection {#1049
+      -snapshot: []
+      -owner: App\Entity\Movie {#4829}
+      -association: array:20 [ …20]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "movies"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#2447 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#1697
+        -elements: []
+      }
+      #initialized: false
+    }
+    -director: Proxies\__CG__\App\Entity\Person {#536 …2}
+    -writers: Doctrine\ORM\PersistentCollection {#4943
+      -snapshot: []
+      -owner: App\Entity\Movie {#4829}
+      -association: array:20 [ …20]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "writedMovies"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#455 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#4834
+        -elements: []
+      }
+      #initialized: false
+    }
+    -awards: Doctrine\ORM\PersistentCollection {#4924
+      -snapshot: []
+      -owner: App\Entity\Movie {#4829}
+      -association: array:15 [ …15]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "movie"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#516 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#5019
+        -elements: []
+      }
+      #initialized: false
+    }
+    -posts: Doctrine\ORM\PersistentCollection {#4563
+      -snapshot: []
+      -owner: App\Entity\Movie {#4829}
+      -association: array:16 [ …16]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "movies"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#1804 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#1484
+        -elements: []
+      }
+      #initialized: false
+    }
+    -movieActors: Doctrine\ORM\PersistentCollection {#5018
+      -snapshot: []
+      -owner: App\Entity\Movie {#4829}
+      -association: array:15 [ …15]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "movie"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#6043 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#5826
+        -elements: []
+      }
+      #initialized: false
+    }
+    -imageFilename: "20051394-jpg-r-1920-1080-f-jpg-q-x-xxyxx-5ec3e977abd01.jpeg"
+    -slug: null
+  }
+  2 => App\Entity\Movie {#5024
+    -id: 4
+    -title: "Alien"
+    -releaseDate: DateTime @305942400 {#4892
+      date: 1979-09-12 00:00:00.0 UTC (+00:00)
+    }
+    -categories: Doctrine\ORM\PersistentCollection {#1379
+      -snapshot: []
+      -owner: App\Entity\Movie {#5024}
+      -association: array:20 [ …20]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "movies"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#2447 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#5942
+        -elements: []
+      }
+      #initialized: false
+    }
+    -director: Proxies\__CG__\App\Entity\Person {#536 …2}
+    -writers: Doctrine\ORM\PersistentCollection {#5813
+      -snapshot: []
+      -owner: App\Entity\Movie {#5024}
+      -association: array:20 [ …20]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "writedMovies"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#455 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#5938
+        -elements: []
+      }
+      #initialized: false
+    }
+    -awards: Doctrine\ORM\PersistentCollection {#1687
+      -snapshot: []
+      -owner: App\Entity\Movie {#5024}
+      -association: array:15 [ …15]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "movie"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#516 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#4996
+        -elements: []
+      }
+      #initialized: false
+    }
+    -posts: Doctrine\ORM\PersistentCollection {#1514
+      -snapshot: []
+      -owner: App\Entity\Movie {#5024}
+      -association: array:16 [ …16]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "movies"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#1804 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#4901
+        -elements: []
+      }
+      #initialized: false
+    }
+    -movieActors: Doctrine\ORM\PersistentCollection {#4802
+      -snapshot: []
+      -owner: App\Entity\Movie {#5024}
+      -association: array:15 [ …15]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "movie"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#6043 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#6060
+        -elements: []
+      }
+      #initialized: false
+    }
+    -imageFilename: "350947-poster-l-5ec3e6562ef21.jpeg"
+    -slug: "alien"
+  }
+  3 => App\Entity\Movie {#4875
+    -id: 8
+    -title: "Le Seigneur des anneaux : Les Deux Tours"
+    -releaseDate: DateTime @1010102400 {#1141
+      date: 2002-01-04 00:00:00.0 UTC (+00:00)
+    }
+    -categories: Doctrine\ORM\PersistentCollection {#1079
+      -snapshot: []
+      -owner: App\Entity\Movie {#4875}
+      -association: array:20 [ …20]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "movies"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#2447 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#1129
+        -elements: []
+      }
+      #initialized: false
+    }
+    -director: Proxies\__CG__\App\Entity\Person {#1502
+      +__isInitialized__: false
+      -id: 20
+      -name: null
+      -birthDate: null
+      -writedMovies: null
+      -directedMovies: null
+      -movieActors: null
+       …2
+    }
+    -writers: Doctrine\ORM\PersistentCollection {#4927
+      -snapshot: []
+      -owner: App\Entity\Movie {#4875}
+      -association: array:20 [ …20]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "writedMovies"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#455 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#4946
+        -elements: []
+      }
+      #initialized: false
+    }
+    -awards: Doctrine\ORM\PersistentCollection {#753
+      -snapshot: []
+      -owner: App\Entity\Movie {#4875}
+      -association: array:15 [ …15]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "movie"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#516 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#3206
+        -elements: []
+      }
+      #initialized: false
+    }
+    -posts: Doctrine\ORM\PersistentCollection {#4866
+      -snapshot: []
+      -owner: App\Entity\Movie {#4875}
+      -association: array:16 [ …16]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "movies"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#1804 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#1123
+        -elements: []
+      }
+      #initialized: false
+    }
+    -movieActors: Doctrine\ORM\PersistentCollection {#6088
+      -snapshot: []
+      -owner: App\Entity\Movie {#4875}
+      -association: array:15 [ …15]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "movie"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#6043 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#1423
+        -elements: []
+      }
+      #initialized: false
+    }
+    -imageFilename: "517s5sH-kQL-AC-5ec3e89902963.jpeg"
+    -slug: null
+  }
+  4 => App\Entity\Movie {#5268
+    -id: 9
+    -title: "Le Seigneur des anneaux : Le Retour du roi"
+    -releaseDate: DateTime @1051747200 {#1324
+      date: 2003-05-01 00:00:00.0 UTC (+00:00)
+    }
+    -categories: Doctrine\ORM\PersistentCollection {#1005
+      -snapshot: []
+      -owner: App\Entity\Movie {#5268}
+      -association: array:20 [ …20]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "movies"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#2447 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#6094
+        -elements: []
+      }
+      #initialized: false
+    }
+    -director: Proxies\__CG__\App\Entity\Person {#1502 …2}
+    -writers: Doctrine\ORM\PersistentCollection {#5263
+      -snapshot: []
+      -owner: App\Entity\Movie {#5268}
+      -association: array:20 [ …20]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "writedMovies"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#455 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#4858
+        -elements: []
+      }
+      #initialized: false
+    }
+    -awards: Doctrine\ORM\PersistentCollection {#1290
+      -snapshot: []
+      -owner: App\Entity\Movie {#5268}
+      -association: array:15 [ …15]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "movie"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#516 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#1556
+        -elements: []
+      }
+      #initialized: false
+    }
+    -posts: Doctrine\ORM\PersistentCollection {#925
+      -snapshot: []
+      -owner: App\Entity\Movie {#5268}
+      -association: array:16 [ …16]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "movies"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#1804 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#1025
+        -elements: []
+      }
+      #initialized: false
+    }
+    -movieActors: Doctrine\ORM\PersistentCollection {#1118
+      -snapshot: []
+      -owner: App\Entity\Movie {#5268}
+      -association: array:15 [ …15]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "movie"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#6043 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#820
+        -elements: []
+      }
+      #initialized: false
+    }
+    -imageFilename: "18366630-5ec3e9448763a.jpeg"
+    -slug: null
+  }
+  5 => App\Entity\Movie {#1105
+    -id: 10
+    -title: "Le Seigneur des anneaux : La communauté de l'anneau"
+    -releaseDate: DateTime @1007251200 {#829
+      date: 2001-12-02 00:00:00.0 UTC (+00:00)
+    }
+    -categories: Doctrine\ORM\PersistentCollection {#821
+      -snapshot: []
+      -owner: App\Entity\Movie {#1105}
+      -association: array:20 [ …20]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "movies"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#2447 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#848
+        -elements: []
+      }
+      #initialized: false
+    }
+    -director: Proxies\__CG__\App\Entity\Person {#1502 …2}
+    -writers: Doctrine\ORM\PersistentCollection {#868
+      -snapshot: []
+      -owner: App\Entity\Movie {#1105}
+      -association: array:20 [ …20]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "writedMovies"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#455 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#928
+        -elements: []
+      }
+      #initialized: false
+    }
+    -awards: Doctrine\ORM\PersistentCollection {#6027
+      -snapshot: []
+      -owner: App\Entity\Movie {#1105}
+      -association: array:15 [ …15]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "movie"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#516 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#6098
+        -elements: []
+      }
+      #initialized: false
+    }
+    -posts: Doctrine\ORM\PersistentCollection {#768
+      -snapshot: []
+      -owner: App\Entity\Movie {#1105}
+      -association: array:16 [ …16]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "movies"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#1804 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#780
+        -elements: []
+      }
+      #initialized: false
+    }
+    -movieActors: Doctrine\ORM\PersistentCollection {#799
+      -snapshot: []
+      -owner: App\Entity\Movie {#1105}
+      -association: array:15 [ …15]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "movie"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#6043 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#762
+        -elements: []
+      }
+      #initialized: false
+    }
+    -imageFilename: "517s5sH-kQL-AC-5ec3e5b237178.jpeg"
+    -slug: null
+  }
+  6 => App\Entity\Movie {#886
+    -id: 25
+    -title: "Star Wars, épisode IV : Un nouvel espoir"
+    -releaseDate: DateTime @246067200 {#5705
+      date: 1977-10-19 00:00:00.0 UTC (+00:00)
+    }
+    -categories: Doctrine\ORM\PersistentCollection {#4507
+      -snapshot: []
+      -owner: App\Entity\Movie {#886}
+      -association: array:20 [ …20]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "movies"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#2447 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#859
+        -elements: []
+      }
+      #initialized: false
+    }
+    -director: Proxies\__CG__\App\Entity\Person {#896
+      +__isInitialized__: false
+      -id: 22
+      -name: null
+      -birthDate: null
+      -writedMovies: null
+      -directedMovies: null
+      -movieActors: null
+       …2
+    }
+    -writers: Doctrine\ORM\PersistentCollection {#5258
+      -snapshot: []
+      -owner: App\Entity\Movie {#886}
+      -association: array:20 [ …20]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "writedMovies"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#455 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#469
+        -elements: []
+      }
+      #initialized: false
+    }
+    -awards: Doctrine\ORM\PersistentCollection {#5810
+      -snapshot: []
+      -owner: App\Entity\Movie {#886}
+      -association: array:15 [ …15]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "movie"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#516 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#789
+        -elements: []
+      }
+      #initialized: false
+    }
+    -posts: Doctrine\ORM\PersistentCollection {#5239
+      -snapshot: []
+      -owner: App\Entity\Movie {#886}
+      -association: array:16 [ …16]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "movies"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#1804 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#2266
+        -elements: []
+      }
+      #initialized: false
+    }
+    -movieActors: Doctrine\ORM\PersistentCollection {#6061
+      -snapshot: []
+      -owner: App\Entity\Movie {#886}
+      -association: array:15 [ …15]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "movie"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#6043 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#6009
+        -elements: []
+      }
+      #initialized: false
+    }
+    -imageFilename: "18867130-jpg-r-1280-720-f-jpg-q-x-xxyxx-5ec4f6c472643.jpeg"
+    -slug: null
+  }
+  7 => App\Entity\Movie {#752
+    -id: 26
+    -title: "Star Wars, épisode V : L'Empire contre-attaque"
+    -releaseDate: DateTime @335577600 {#6057
+      date: 1980-08-20 00:00:00.0 UTC (+00:00)
+    }
+    -categories: Doctrine\ORM\PersistentCollection {#1107
+      -snapshot: []
+      -owner: App\Entity\Movie {#752}
+      -association: array:20 [ …20]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "movies"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#2447 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#6046
+        -elements: []
+      }
+      #initialized: false
+    }
+    -director: Proxies\__CG__\App\Entity\Person {#896 …2}
+    -writers: Doctrine\ORM\PersistentCollection {#6123
+      -snapshot: []
+      -owner: App\Entity\Movie {#752}
+      -association: array:20 [ …20]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "writedMovies"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#455 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#6010
+        -elements: []
+      }
+      #initialized: false
+    }
+    -awards: Doctrine\ORM\PersistentCollection {#4851
+      -snapshot: []
+      -owner: App\Entity\Movie {#752}
+      -association: array:15 [ …15]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "movie"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#516 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#732
+        -elements: []
+      }
+      #initialized: false
+    }
+    -posts: Doctrine\ORM\PersistentCollection {#6067
+      -snapshot: []
+      -owner: App\Entity\Movie {#752}
+      -association: array:16 [ …16]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "movies"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#1804 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#1247
+        -elements: []
+      }
+      #initialized: false
+    }
+    -movieActors: Doctrine\ORM\PersistentCollection {#6146
+      -snapshot: []
+      -owner: App\Entity\Movie {#752}
+      -association: array:15 [ …15]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "movie"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#6043 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#4856
+        -elements: []
+      }
+      #initialized: false
+    }
+    -imageFilename: "Star-Wars-Episode-5-L-Empire-Contre-Attaque-5ec4f8ed7b86b.jpeg"
+    -slug: null
+  }
+  8 => App\Entity\Movie {#1538
+    -id: 28
+    -title: "Star Wars, épisode VI : Le Retour du Jedi"
+    -releaseDate: DateTime @435369600 {#4863
+      date: 1983-10-19 00:00:00.0 UTC (+00:00)
+    }
+    -categories: Doctrine\ORM\PersistentCollection {#826
+      -snapshot: []
+      -owner: App\Entity\Movie {#1538}
+      -association: array:20 [ …20]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "movies"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#2447 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#1601
+        -elements: []
+      }
+      #initialized: false
+    }
+    -director: Proxies\__CG__\App\Entity\Person {#896 …2}
+    -writers: Doctrine\ORM\PersistentCollection {#4742
+      -snapshot: []
+      -owner: App\Entity\Movie {#1538}
+      -association: array:20 [ …20]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "writedMovies"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#455 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#4855
+        -elements: []
+      }
+      #initialized: false
+    }
+    -awards: Doctrine\ORM\PersistentCollection {#4840
+      -snapshot: []
+      -owner: App\Entity\Movie {#1538}
+      -association: array:15 [ …15]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "movie"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#516 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#1155
+        -elements: []
+      }
+      #initialized: false
+    }
+    -posts: Doctrine\ORM\PersistentCollection {#1391
+      -snapshot: []
+      -owner: App\Entity\Movie {#1538}
+      -association: array:16 [ …16]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "movies"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#1804 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#5830
+        -elements: []
+      }
+      #initialized: false
+    }
+    -movieActors: Doctrine\ORM\PersistentCollection {#1371
+      -snapshot: []
+      -owner: App\Entity\Movie {#1538}
+      -association: array:15 [ …15]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "movie"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#6043 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#1516
+        -elements: []
+      }
+      #initialized: false
+    }
+    -imageFilename: "retour-jedi-poster-5ec4f98cd9eeb.jpeg"
+    -slug: null
+  }
+  9 => App\Entity\Movie {#6087
+    -id: 29
+    -title: "Star Wars, épisode I : La Menace fantôme"
+    -releaseDate: DateTime @750470400 {#1115
+      date: 1993-10-13 00:00:00.0 UTC (+00:00)
+    }
+    -categories: Doctrine\ORM\PersistentCollection {#1593
+      -snapshot: []
+      -owner: App\Entity\Movie {#6087}
+      -association: array:20 [ …20]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "movies"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#2447 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#5827
+        -elements: []
+      }
+      #initialized: false
+    }
+    -director: Proxies\__CG__\App\Entity\Person {#896 …2}
+    -writers: Doctrine\ORM\PersistentCollection {#1268
+      -snapshot: []
+      -owner: App\Entity\Movie {#6087}
+      -association: array:20 [ …20]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "writedMovies"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#455 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#746
+        -elements: []
+      }
+      #initialized: false
+    }
+    -awards: Doctrine\ORM\PersistentCollection {#4961
+      -snapshot: []
+      -owner: App\Entity\Movie {#6087}
+      -association: array:15 [ …15]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "movie"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#516 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#2440
+        -elements: []
+      }
+      #initialized: false
+    }
+    -posts: Doctrine\ORM\PersistentCollection {#1254
+      -snapshot: []
+      -owner: App\Entity\Movie {#6087}
+      -association: array:16 [ …16]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "movies"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#1804 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#1291
+        -elements: []
+      }
+      #initialized: false
+    }
+    -movieActors: Doctrine\ORM\PersistentCollection {#1527
+      -snapshot: []
+      -owner: App\Entity\Movie {#6087}
+      -association: array:15 [ …15]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "movie"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#6043 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#1182
+        -elements: []
+      }
+      #initialized: false
+    }
+    -imageFilename: "images-5ec4fa99d46c5.jpeg"
+    -slug: null
+  }
+  10 => App\Entity\Movie {#4489
+    -id: 30
+    -title: "Star Wars, épisode II : L'Attaque des clones"
+    -releaseDate: DateTime @1021593600 {#4803
+      date: 2002-05-17 00:00:00.0 UTC (+00:00)
+    }
+    -categories: Doctrine\ORM\PersistentCollection {#976
+      -snapshot: []
+      -owner: App\Entity\Movie {#4489}
+      -association: array:20 [ …20]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "movies"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#2447 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#1405
+        -elements: []
+      }
+      #initialized: false
+    }
+    -director: Proxies\__CG__\App\Entity\Person {#896 …2}
+    -writers: Doctrine\ORM\PersistentCollection {#1570
+      -snapshot: []
+      -owner: App\Entity\Movie {#4489}
+      -association: array:20 [ …20]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "writedMovies"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#455 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#786
+        -elements: []
+      }
+      #initialized: false
+    }
+    -awards: Doctrine\ORM\PersistentCollection {#4835
+      -snapshot: []
+      -owner: App\Entity\Movie {#4489}
+      -association: array:15 [ …15]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "movie"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#516 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#5969
+        -elements: []
+      }
+      #initialized: false
+    }
+    -posts: Doctrine\ORM\PersistentCollection {#5842
+      -snapshot: []
+      -owner: App\Entity\Movie {#4489}
+      -association: array:16 [ …16]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "movies"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#1804 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#5026
+        -elements: []
+      }
+      #initialized: false
+    }
+    -movieActors: Doctrine\ORM\PersistentCollection {#580
+      -snapshot: []
+      -owner: App\Entity\Movie {#4489}
+      -association: array:15 [ …15]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "movie"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#6043 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#758
+        -elements: []
+      }
+      #initialized: false
+    }
+    -imageFilename: "star-wars-episode-ii-l-attaque-des-clones-5ec4fb2ada77b.jpeg"
+    -slug: null
+  }
+  11 => App\Entity\Movie {#961
+    -id: 31
+    -title: "Star Wars, épisode III : La Revanche des Sith"
+    -releaseDate: DateTime @1116374400 {#1008
+      date: 2005-05-18 00:00:00.0 UTC (+00:00)
+    }
+    -categories: Doctrine\ORM\PersistentCollection {#825
+      -snapshot: []
+      -owner: App\Entity\Movie {#961}
+      -association: array:20 [ …20]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "movies"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#2447 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#754
+        -elements: []
+      }
+      #initialized: false
+    }
+    -director: Proxies\__CG__\App\Entity\Person {#896 …2}
+    -writers: Doctrine\ORM\PersistentCollection {#6148
+      -snapshot: []
+      -owner: App\Entity\Movie {#961}
+      -association: array:20 [ …20]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "writedMovies"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#455 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#853
+        -elements: []
+      }
+      #initialized: false
+    }
+    -awards: Doctrine\ORM\PersistentCollection {#887
+      -snapshot: []
+      -owner: App\Entity\Movie {#961}
+      -association: array:15 [ …15]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "movie"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#516 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#975
+        -elements: []
+      }
+      #initialized: false
+    }
+    -posts: Doctrine\ORM\PersistentCollection {#994
+      -snapshot: []
+      -owner: App\Entity\Movie {#961}
+      -association: array:16 [ …16]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "movies"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#1804 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#1369
+        -elements: []
+      }
+      #initialized: false
+    }
+    -movieActors: Doctrine\ORM\PersistentCollection {#1215
+      -snapshot: []
+      -owner: App\Entity\Movie {#961}
+      -association: array:15 [ …15]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "movie"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#6043 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#5786
+        -elements: []
+      }
+      #initialized: false
+    }
+    -imageFilename: "0093ba0d2a312241474d5f2fd9158459-5ec4fb86ccc29.jpeg"
+    -slug: null
+  }
+  12 => App\Entity\Movie {#5240
+    -id: 32
+    -title: "Star Wars : Le Réveil de la Force"
+    -releaseDate: DateTime @1450224000 {#897
+      date: 2015-12-16 00:00:00.0 UTC (+00:00)
+    }
+    -categories: Doctrine\ORM\PersistentCollection {#1500
+      -snapshot: []
+      -owner: App\Entity\Movie {#5240}
+      -association: array:20 [ …20]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "movies"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#2447 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#1010
+        -elements: []
+      }
+      #initialized: false
+    }
+    -director: Proxies\__CG__\App\Entity\Person {#1987
+      +__isInitialized__: false
+      -id: 23
+      -name: null
+      -birthDate: null
+      -writedMovies: null
+      -directedMovies: null
+      -movieActors: null
+       …2
+    }
+    -writers: Doctrine\ORM\PersistentCollection {#1006
+      -snapshot: []
+      -owner: App\Entity\Movie {#5240}
+      -association: array:20 [ …20]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "writedMovies"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#455 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#1431
+        -elements: []
+      }
+      #initialized: false
+    }
+    -awards: Doctrine\ORM\PersistentCollection {#1214
+      -snapshot: []
+      -owner: App\Entity\Movie {#5240}
+      -association: array:15 [ …15]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "movie"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#516 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#1269
+        -elements: []
+      }
+      #initialized: false
+    }
+    -posts: Doctrine\ORM\PersistentCollection {#2505
+      -snapshot: []
+      -owner: App\Entity\Movie {#5240}
+      -association: array:16 [ …16]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "movies"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#1804 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#5918
+        -elements: []
+      }
+      #initialized: false
+    }
+    -movieActors: Doctrine\ORM\PersistentCollection {#1363
+      -snapshot: []
+      -owner: App\Entity\Movie {#5240}
+      -association: array:15 [ …15]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "movie"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#6043 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#1358
+        -elements: []
+      }
+      #initialized: false
+    }
+    -imageFilename: "images-1-5ec4fbdfa3c9a.jpeg"
+    -slug: null
+  }
+  13 => App\Entity\Movie {#4882
+    -id: 33
+    -title: "Star Wars, épisode VIII : Les Derniers Jedi"
+    -releaseDate: DateTime @1513123200 {#1003
+      date: 2017-12-13 00:00:00.0 UTC (+00:00)
+    }
+    -categories: Doctrine\ORM\PersistentCollection {#1144
+      -snapshot: []
+      -owner: App\Entity\Movie {#4882}
+      -association: array:20 [ …20]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "movies"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#2447 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#1165
+        -elements: []
+      }
+      #initialized: false
+    }
+    -director: Proxies\__CG__\App\Entity\Person {#2178
+      +__isInitialized__: false
+      -id: 24
+      -name: null
+      -birthDate: null
+      -writedMovies: null
+      -directedMovies: null
+      -movieActors: null
+       …2
+    }
+    -writers: Doctrine\ORM\PersistentCollection {#2327
+      -snapshot: []
+      -owner: App\Entity\Movie {#4882}
+      -association: array:20 [ …20]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "writedMovies"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#455 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#977
+        -elements: []
+      }
+      #initialized: false
+    }
+    -awards: Doctrine\ORM\PersistentCollection {#4978
+      -snapshot: []
+      -owner: App\Entity\Movie {#4882}
+      -association: array:15 [ …15]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "movie"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#516 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#5870
+        -elements: []
+      }
+      #initialized: false
+    }
+    -posts: Doctrine\ORM\PersistentCollection {#1036
+      -snapshot: []
+      -owner: App\Entity\Movie {#4882}
+      -association: array:16 [ …16]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "movies"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#1804 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#5224
+        -elements: []
+      }
+      #initialized: false
+    }
+    -movieActors: Doctrine\ORM\PersistentCollection {#983
+      -snapshot: []
+      -owner: App\Entity\Movie {#4882}
+      -association: array:15 [ …15]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "movie"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#6043 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#5222
+        -elements: []
+      }
+      #initialized: false
+    }
+    -imageFilename: "51VRhXndEZL-5ec53d1ab60cd.jpeg"
+    -slug: null
+  }
+  14 => App\Entity\Movie {#4983
+    -id: 34
+    -title: "Star Wars, épisode IX : L'Ascension de Skywalker"
+    -releaseDate: DateTime @1576627200 {#1056
+      date: 2019-12-18 00:00:00.0 UTC (+00:00)
+    }
+    -categories: Doctrine\ORM\PersistentCollection {#5820
+      -snapshot: []
+      -owner: App\Entity\Movie {#4983}
+      -association: array:20 [ …20]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "movies"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#2447 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#5873
+        -elements: []
+      }
+      #initialized: false
+    }
+    -director: Proxies\__CG__\App\Entity\Person {#1987 …2}
+    -writers: Doctrine\ORM\PersistentCollection {#4836
+      -snapshot: []
+      -owner: App\Entity\Movie {#4983}
+      -association: array:20 [ …20]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "writedMovies"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#455 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#1065
+        -elements: []
+      }
+      #initialized: false
+    }
+    -awards: Doctrine\ORM\PersistentCollection {#1279
+      -snapshot: []
+      -owner: App\Entity\Movie {#4983}
+      -association: array:15 [ …15]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "movie"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#516 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#1127
+        -elements: []
+      }
+      #initialized: false
+    }
+    -posts: Doctrine\ORM\PersistentCollection {#5209
+      -snapshot: []
+      -owner: App\Entity\Movie {#4983}
+      -association: array:16 [ …16]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "movies"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#1804 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#1590
+        -elements: []
+      }
+      #initialized: false
+    }
+    -movieActors: Doctrine\ORM\PersistentCollection {#1047
+      -snapshot: []
+      -owner: App\Entity\Movie {#4983}
+      -association: array:15 [ …15]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "movie"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#6043 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#788
+        -elements: []
+      }
+      #initialized: false
+    }
+    -imageFilename: "images-2-5ec4fcd849f37.jpeg"
+    -slug: null
+  }
+  15 => App\Entity\Movie {#1327
+    -id: 35
+    -title: "Heat"
+    -releaseDate: DateTime @824860800 {#5867
+      date: 1996-02-21 00:00:00.0 UTC (+00:00)
+    }
+    -categories: Doctrine\ORM\PersistentCollection {#1016
+      -snapshot: []
+      -owner: App\Entity\Movie {#1327}
+      -association: array:20 [ …20]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "movies"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#2447 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#5912
+        -elements: []
+      }
+      #initialized: false
+    }
+    -director: Proxies\__CG__\App\Entity\Person {#1330
+      +__isInitialized__: false
+      -id: 25
+      -name: null
+      -birthDate: null
+      -writedMovies: null
+      -directedMovies: null
+      -movieActors: null
+       …2
+    }
+    -writers: Doctrine\ORM\PersistentCollection {#5881
+      -snapshot: []
+      -owner: App\Entity\Movie {#1327}
+      -association: array:20 [ …20]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "writedMovies"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#455 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#1069
+        -elements: []
+      }
+      #initialized: false
+    }
+    -awards: Doctrine\ORM\PersistentCollection {#5213
+      -snapshot: []
+      -owner: App\Entity\Movie {#1327}
+      -association: array:15 [ …15]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "movie"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#516 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#993
+        -elements: []
+      }
+      #initialized: false
+    }
+    -posts: Doctrine\ORM\PersistentCollection {#5217
+      -snapshot: []
+      -owner: App\Entity\Movie {#1327}
+      -association: array:16 [ …16]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "movies"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#1804 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#5884
+        -elements: []
+      }
+      #initialized: false
+    }
+    -movieActors: Doctrine\ORM\PersistentCollection {#4980
+      -snapshot: []
+      -owner: App\Entity\Movie {#1327}
+      -association: array:15 [ …15]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "movie"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#6043 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#4789
+        -elements: []
+      }
+      #initialized: false
+    }
+    -imageFilename: "51WBWWKN3WL-AC-SY445-5ec51fb676f53.jpeg"
+    -slug: null
+  }
+  16 => App\Entity\Movie {#770
+    -id: 39
+    -title: "Once Upon a Time… in Hollywood"
+    -releaseDate: DateTime @1565740800 {#817
+      date: 2019-08-14 00:00:00.0 UTC (+00:00)
+    }
+    -categories: Doctrine\ORM\PersistentCollection {#778
+      -snapshot: []
+      -owner: App\Entity\Movie {#770}
+      -association: array:20 [ …20]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "movies"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#2447 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#1033
+        -elements: []
+      }
+      #initialized: false
+    }
+    -director: Proxies\__CG__\App\Entity\Person {#1868
+      +__isInitialized__: false
+      -id: 42
+      -name: null
+      -birthDate: null
+      -writedMovies: null
+      -directedMovies: null
+      -movieActors: null
+       …2
+    }
+    -writers: Doctrine\ORM\PersistentCollection {#6213
+      -snapshot: []
+      -owner: App\Entity\Movie {#770}
+      -association: array:20 [ …20]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "writedMovies"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#455 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#766
+        -elements: []
+      }
+      #initialized: false
+    }
+    -awards: Doctrine\ORM\PersistentCollection {#2016
+      -snapshot: []
+      -owner: App\Entity\Movie {#770}
+      -association: array:15 [ …15]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "movie"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#516 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#1939
+        -elements: []
+      }
+      #initialized: false
+    }
+    -posts: Doctrine\ORM\PersistentCollection {#6219
+      -snapshot: []
+      -owner: App\Entity\Movie {#770}
+      -association: array:16 [ …16]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "movies"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#1804 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#6215
+        -elements: []
+      }
+      #initialized: false
+    }
+    -movieActors: Doctrine\ORM\PersistentCollection {#6214
+      -snapshot: []
+      -owner: App\Entity\Movie {#770}
+      -association: array:15 [ …15]
+      -em: Doctrine\ORM\EntityManager {#5448 …11}
+      -backRefFieldName: "movie"
+      -typeClass: Doctrine\ORM\Mapping\ClassMetadata {#6043 …}
+      -isDirty: false
+      #collection: Doctrine\Common\Collections\ArrayCollection {#1446
+        -elements: []
+      }
+      #initialized: false
+    }
+    -imageFilename: "cab3a-42ec51-3bf9d91f413b4b86a5eaa9eb0e204a6cmv2-5ecce97992b13.jpeg"
+    -slug: "once-upon-a-time-in-hollywood"
+  }
+]
+
+ [OK] You have a new command! Now make it your own! Pass --help to see your options.                                    
+
