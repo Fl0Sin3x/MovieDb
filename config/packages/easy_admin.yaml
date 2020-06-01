@@ -39,6 +39,16 @@ easy_admin:
           }
     Category:
       class: App\Entity\Category
+      form:
+        fields:
+          - label
+        list:
+          fields:
+            - id
+            - label
+            - createdAt
+            - updatedAt
+            - movies
     Person:
       class: App\Entity\Person
     Post:

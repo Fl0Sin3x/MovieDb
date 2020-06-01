@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\MovieRepository;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -18,6 +19,7 @@ class Movie
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"api_v1_movies"})
      */
     private $id;
 
@@ -25,19 +27,22 @@ class Movie
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank
      * @Assert\Length(max=255)
+     * @Groups({"api_v1_movies"})
      */
     private $title;
 
     /**
      * @ORM\Column(type="date")
      * @Assert\NotNull
-     * * @Assert\Type(\DateTime::class)
+     * @Assert\Type(\DateTime::class)
+     * @Groups({"api_v1_movies"})
      */
     private $releaseDate;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Category", inversedBy="movies")
      * * @Assert\Count(min=1, max=4)
+     * @Groups({"api_v1_movies"})
      */
     private $categories;
 
@@ -75,9 +80,14 @@ class Movie
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     *
+     * @Groups({"api_v1_movies"})
      */
     private $imageFilename;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $slug;
 
     public function getImageFilename()
     {
@@ -300,5 +310,34 @@ class Movie
         return $this;
     }
 
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(?string $slug): self
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Démo pour les API, on peut ajouter des propriété qui n'en sont pas
+     * @Groups({"api_v1_movies"})
+     */
+    public function getCountCategories()
+    {
+        return count($this->categories);
+    }
+    /**
+     * Démo pour les API, on peut ajouter des propriété qui n'en sont pas
+     * @Groups({"api_v1_movies"})
+     */
+
+    public function getDirectorName()
+    {
+        return $this->director->getName();
+    }
 
 }

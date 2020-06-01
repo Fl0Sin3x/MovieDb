@@ -2,7 +2,9 @@
 
 namespace App\DataFixtures;
 
+use App\DataFixtures\Providers\MovieAndGenreProvider;
 use App\Entity\Person;
+use App\Service\Slugger;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use App\Entity\Movie;
@@ -12,10 +14,17 @@ use DateInterval;
 
 class AppFixtures extends Fixture
 {
+    private $slugger;
+
+    public function __construct(Slugger $slugger)
+    {
+        $this->slugger = $slugger;
+    }
     public function load(ObjectManager $manager)
     {
         $faker = Factory::create();
 
+        $faker->addProvider(new MovieAndGenreProvider($faker));
         $categoryList = [];
         $categories = ["Science-fiction", "Aventure", "Thriller","Action","Horreur"];
         foreach($categories as $catgeoryName) {
@@ -27,7 +36,7 @@ class AppFixtures extends Fixture
 
 
         $personList = [];
-        for ($i=0; $i < 200; $i++) {
+        for ($i=0; $i < 40; $i++) {
             $person = new Person();
             $person->setName($faker->name());
             $person->setBirthDate($faker->dateTimeBetween("-120 years"));
@@ -35,9 +44,15 @@ class AppFixtures extends Fixture
             $manager->persist($person);
         }
 
-        for ($i = 0; $i < 20; $i++) {
+        for ($i = 0; $i < 100 ; $i++) {
             $movie = new Movie();
-            $movie->setTitle($faker->catchPhrase);
+
+            $title = $faker->movieTitle();
+            $movie->setTitle($title);
+
+            // Ajoutons le slug pour ce film
+            $movie->setSlug($this->slugger->slugify($title));
+
 
             $director = $personList[mt_rand(0, count($personList) - 1)];
             $movie->setDirector($director);

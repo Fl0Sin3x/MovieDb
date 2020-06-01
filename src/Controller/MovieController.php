@@ -9,6 +9,7 @@ use App\Entity\Person;
 use App\Form\CategoryType;
 use App\Form\MovieActorType;
 use App\Form\MovieType;
+use App\Service\Slugger;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,6 +22,18 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
  */
 class MovieController extends AbstractController
 {
+// On aurait utiliser le slugger avec une injection de dépendances
+    // Cette technique peut remplacer l'usage des paramètres dans les méthodes
+    // Si, par exemple, on utilisait le Slugger dans toutes les méthodes de ce contrôleur,
+    // on pourrait se faciliter la tâche pour accéder au Slugger
+    // sans avoir à taper `Slugger $slugger` partout
+    // Il faudra cependant utiliser $this->slugger et non $slugger dans nos méthodes de contrôleur
+    // private $slugger;
+
+    // public function __construct(Slugger $slugger)
+    // {
+    //     $this->slugger = $slugger;
+    // }
 
     /**
      * @Route("/list", name="movie_list", methods={"GET"})
@@ -50,13 +63,14 @@ class MovieController extends AbstractController
     /**
      * @Route("/{id}/view", name="movie_view", requirements={"id" = "\d+"}, methods={"GET"})
      */
-    public function view($id)
+    public function view($id, slugger $slugger)
     {
         $movie = $this->getDoctrine()->getRepository(Movie::class)->findWithFullData($id);
 
         if(!$movie) {
             throw $this->createNotFoundException("Ce film n'existe pas !");
         }
+
 
         return $this->render('movie/view.html.twig', [
             'movie' => $movie,
@@ -66,48 +80,40 @@ class MovieController extends AbstractController
     /**
      * @Route("/add", name="movie_add", methods={"GET", "POST"})
      */
-    public function add(Request $request, SluggerInterface $slugger)
+    public function add(Request $request, Slugger $slugger)
     {
-        $newMovie = new Movie();
-        //Je crée un formulaire grace a ma classe CategoryType
-        // Symfony va automatiquement appeler la methode buildForm() de cette classe
-        $form = $this->createForm(MovieType::class, $newMovie);
+        $movie = new Movie();
+        $form = $this->createForm(MovieType::class, $movie);
 
         $form->handleRequest($request);
-        // A ce moment le formualire sait si des données ont été postées
-        if($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
 
-            /** @var UploadedFile $imageFile */
-            $imageFile = $form->get('image')->getData();
+            // On ajoute le slug du $movie à partir de son titre
+            $slug = $slugger->slugify($movie->getTitle());
+            $movie->setSlug($slug);
 
-            if ($imageFile) {
-                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+            /** @var UploadedFile imageFilename  */
+            $imageFilename  = $form->get('image')->getData();
+            if($imageFilename ) {
+                $filename = uniqid() . '.' . $imageFilename ->guessExtension();
 
-                $safeFilename = $slugger->slug($originalFilename);
-                $newFilename = $safeFilename.'-'.uniqid().'.'.$imageFile->guessExtension();
-                try {
-                    $imageFile->move(
-                        $this->getParameter('images_directory'),
-                        $newFilename
-                    );
-                } catch (FileException $e) {
+                $imageFilename ->move(
+                    $this->getParameter('images_directory'),
+                    $filename
+                );
 
-                }
-                $newMovie->setImageFilename($newFilename);
+                $movie->setImageFilename($filename);
             }
-            $manager = $this->getDoctrine()->getManager();
-            $manager->persist($newMovie);
-            $manager->flush();
-            return $this->redirectToRoute('movie_view', ['id' => $newMovie->getId() ]);
-        }
 
-        // on envoi le formulaire a la template
-        return $this->render(
-            'movie/add.html.twig',
-            [
-                "formMovie" => $form->createView()
-            ]
-        );
+            $manager = $this->getDoctrine()->getManager();
+            $manager->persist($movie);
+            $manager->flush();
+
+            return $this->redirectToRoute('movie_view', ['id' => $movie->getId()]);
+        }
+        return $this->render('movie/add.html.twig', [
+            "form" => $form->createView(),
+        ]);
     }
 
 
@@ -135,37 +141,31 @@ class MovieController extends AbstractController
     /**
      * @Route("/{id}/update", name="movie_update", requirements={"id" = "\d+"}, methods={"GET", "POST"})
      */
-    public function update(Movie $movie, Request $request, SluggerInterface $slugger)
+    public function update(Movie $movie, Request $request, Slugger $slugger)
     {
 
         $form = $this->createForm(MovieType::class, $movie);
 
         $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()) {
-            $imageFile = $form->get('image')->getData();
+        if ($form->isSubmitted() && $form->isValid()) {
 
-            // this condition is needed because the 'image' field is not required
-            // so the PDF file must be processed only when a file is uploaded
-            if ($imageFile) {
-                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
-                // this is needed to safely include the file name as part of the URL
-                $safeFilename = $slugger->slug($originalFilename);
-                $newFilename = $safeFilename.'-'.uniqid().'.'.$imageFile->guessExtension();
+            // On recalcule le slug au cas où il a été modifié
+            $movie->setSlug($slugger->slugify($movie->getTitle()));
 
-                // Move the file to the directory where images are stored
-                try {
-                    $imageFile->move(
-                        $this->getParameter('images_directory'),
-                        $newFilename
-                    );
-                } catch (FileException $e) {
-                    // ... handle exception if something happens during file upload
-                }
 
-                // updates the 'imageFilename' property to store the PDF file name
-                // instead of its contents
-                $movie->setImageFilename($newFilename);
+            /** @var UploadedFile imageFilename  */
+            $imageFilename  = $form->get('image')->getData();
+            if($imageFilename ) {
+                $filename = uniqid() . '.' . $imageFilename ->guessExtension();
+
+                $imageFilename ->move(
+                    $this->getParameter('images_directory'),
+                    $filename
+                );
+
+                $movie->setImageFilename($filename);
             }
+
             // il manque le traitement de l'image ici
             // @TODO : Faire pareil que dans le add
             $manager = $this->getDoctrine()->getManager();

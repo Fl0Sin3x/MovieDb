@@ -99,6 +99,11 @@ class CategoryController extends AbstractController
 
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()) {
+            // En temps normal, sans les Events, on devrait mettre à jour $category
+            // $category->setUpdatedAt(new \DateTime());
+
+
+
             $manager = $this->getDoctrine()->getManager();
             // Pas besoin de persist, l'objet manipulé est déjà connu du manager
             $manager->flush();

@@ -3,14 +3,22 @@
 namespace App\Entity;
 
 use App\Repository\CategoryRepository;
+use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
+
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-use Doctrine\ORM\Mapping as ORM;
+
+
 
 /**
  * @ORM\Entity(repositoryClass=CategoryRepository::class)
+ *
+ * On déclare que notre entité a des LifecycleCallbacks
+ * @ORM\HasLifecycleCallbacks()
  * @UniqueEntity(
  *     fields={"label"},
  *     message="Une catégorie existe déjà avec ce libellé")
@@ -21,6 +29,7 @@ class Category
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"api_v1_movies"})
      */
     private $id;
 
@@ -28,6 +37,7 @@ class Category
      * @ORM\Column(type="string", length=100)
      * @Assert\Length(min=2)
      * @Assert\NotNull
+     * @Groups({"api_v1_movies"})
      */
     private $label;
 
@@ -36,8 +46,19 @@ class Category
      */
     private $movies;
 
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $createdAt;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $updatedAt;
+
     public function __construct()
     {
+        $this->createdAt = new \DateTime();
         $this->movies = new ArrayCollection();
     }
 
@@ -91,4 +112,36 @@ class Category
         return $this;
     }
 
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+
+    /**
+     * @ORM\PreUpdate
+     */
+public function onPreUpdate()
+{
+    $this->updatedAt= new \DateTime();
+}
 }
