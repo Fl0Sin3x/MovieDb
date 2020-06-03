@@ -7,12 +7,12 @@
 {% block body %}
     <h1 class="mt-5">Ajouter un film</h1>
 
-    {{ form_start(formMovie) }}
-    {{ form_row(formMovie.title,{'attr':{'placeholder':"Titre du film"}}) }}
-    {{ form_widget(formMovie) }}
+    {{ form_start(form) }}
+    {{ form_row(form.title,{'attr':{'placeholder':"Titre du film"}}) }}
+    {{ form_widget(form) }}
 
 
     <button class="btn btn-primary" type="submit">Valider</button>
-    {{ form_end(formMovie) }}
+    {{ form_end(form) }}
 
 {% endblock %}
